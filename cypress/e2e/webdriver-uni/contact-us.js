@@ -1,8 +1,11 @@
 /// <reference types = "Cypress" />
 
 describe('Test for Contact Us form', () => {
-    it('should submit the contact form successfully', () => {
+    it.only('should submit the contact form successfully', () => {
         cy.visit('https://webdriveruniversity.com/Contact-Us/contactus.html')
+        cy.url().should('include', 'Contact-Us/contactus');
+        cy.document().should('have.property', 'charset').and('eq', 'UTF-8');
+        cy.title().should('include', 'WebDriver');
        cy.get('[name="first_name"]').type('Geralt');
        cy.get('[name="last_name"]').type('of Rivia');
        cy.get('[name="email"]').type('geralt@something.com');
@@ -10,7 +13,7 @@ describe('Test for Contact Us form', () => {
        cy.get('[type="submit"]').click();
        cy.get('h1').should('have.text', 'Thank You for your Message!');
     })
-    it.only('should not be able to submit the contact form successfully', () => {
+    it('should not be able to submit the contact form successfully', () => {
         cy.visit('https://webdriveruniversity.com/Contact-Us/contactus.html')
        cy.get('[name="first_name"]').type('Geralt');
        cy.get('[name="last_name"]').type('of Rivia');
