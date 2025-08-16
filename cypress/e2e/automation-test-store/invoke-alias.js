@@ -14,4 +14,40 @@ describe('Product title check', () => {
         cy.get('@productThumbnail').should('have.length', 16);
         cy.get('@productThumbnail').find('.productcart').invoke('attr', 'title').should('include', 'Add to Cart')
     })
-})
+
+
+    it.only('Logs all prices and calculates total amount', () => {
+        cy.visit('https://automationteststore.com/');
+        cy.get('.thumbnail').as('productThumbnail');
+        cy.get('@productThumbnail').find('.oneprice').invoke('text').as('itemPrice'); //getting info through class and storing it into 'var' itemPrice
+        cy.get('@productThumbnail').find('.pricenew').invoke('text').as('itemSalePrice');
+
+        let itemsTotal = 0;
+
+        cy.get('@itemPrice').then($linkText => {
+            let itemPriceTotal = 0;
+            let itemPrice = $linkText.split('$'); //spliting text into array based on $ sign
+            for(let i = 0; i < itemPrice.length; i++) {
+                cy.log(itemPrice[i]);
+                itemPriceTotal += Number(itemPrice[i]); //converts text into number and adds to total amount
+            }
+            itemsTotal += itemPriceTotal;
+            cy.log('Total of regular prices: ' + itemPriceTotal);
+        })
+
+        cy.get('@itemSalePrice').then($linkText => {
+            let itemSalePriceTotal = 0;
+            let itemSalePrice = $linkText.split('$');
+            for(let i = 0; i < itemSalePrice.length; i++) {
+                cy.log(itemSalePrice[i]);
+                itemSalePriceTotal += Number(itemSalePrice[i])
+            }
+            itemsTotal += itemSalePriceTotal;
+            cy.log('Total of sale items: ' + itemSalePriceTotal);
+        })
+        .then(() => {
+            cy.log('Total amount of all prices: ' + itemsTotal);
+            expect(itemsTotal).to.eq(673); //checks total amount
+        })
+    });
+});
