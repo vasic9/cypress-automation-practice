@@ -1,4 +1,4 @@
-/// <reference types = "Cypress" />
+/// <reference types = "cypress" />
 
 describe('Product title check', () => {
     it('Chekcs length and accuracy of the title', () => {

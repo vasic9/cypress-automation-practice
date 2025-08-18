@@ -1,4 +1,4 @@
-/// <reference types = "Cypress" />
+/// <reference types = "cypress" />
 
 describe('Verifying variables, cypress commands, jquery commands', () => {
     it('Navigates to specific product pages', () => {

@@ -1,4 +1,4 @@
-/// <reference types = "Cypress" />
+/// <reference types = "cypress" />
 
 describe('Inspecting items with chain of commands', () => {
     it.only('click on the first item using text', () => {

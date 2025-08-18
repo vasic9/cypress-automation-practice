@@ -1,4 +1,4 @@
-/// <reference types = "Cypress" />
+/// <reference types = "cypress" />
 
 describe('Iterating over elements', () => {
     it('Log information of hair care products', () => {

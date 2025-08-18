@@ -1,4 +1,4 @@
-const { defineConfig } = require('Cypress')
+const { defineConfig } = require("cypress")
 
 module.exports = defineConfig({
   video: true,
@@ -6,6 +6,8 @@ module.exports = defineConfig({
     setupNodeEvents(on, config) {
       // implement node event listeners here
     },
-    specPattern: "cypress/e2e/**/*.{js,jsx,ts,tsx}"
+    specPattern: "cypress/e2e/**/*.{js,jsx,ts,tsx}",
+    chromeWebSecurity: false,
+    experimentalOriginDependencies: true
   },
 });
