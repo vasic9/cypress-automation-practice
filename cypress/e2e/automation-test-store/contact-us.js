@@ -1,8 +1,8 @@
 /// <reference types = "cypress" />
 /// <reference types = "cypress-xpath" />
 
-describe('Test for Contact Us form', () => {
-    it('should submit the contact form successfully', () => {
+describe("Test for Contact Us form", () => {
+    it("should submit the contact form successfully", () => {
         cy.visit('https://automationteststore.com/')
         cy.get("a[href$='contact']").click().then(function(itemText){
             cy.log("Clicked on: " + itemText.text())

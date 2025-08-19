@@ -1,7 +1,7 @@
 /// <reference types = "cypress" />
 
-describe('Verifying variables, cypress commands, jquery commands', () => {
-    it('Navigates to specific product pages', () => {
+describe("Verifying variables, cypress commands, jquery commands", () => {
+    it("Navigates to specific product pages", () => {
         cy.visit('https://automationteststore.com/');
         const makeupLink = cy.get("a[href*='product/category&path=']").contains("Makeup").click();
         cy.get("h1 .maintext").then(($headerText) => {
@@ -10,7 +10,7 @@ describe('Verifying variables, cypress commands, jquery commands', () => {
             expect(headerText).is.eq('Makeup')
         })
     })
-    it.only('Validate properties of the contact us page', () => {
+    it.only("Validate properties of the contact us page", () => {
         cy.visit('https://automationteststore.com/index.php?rt=content/contact');
 
         //Chaining
