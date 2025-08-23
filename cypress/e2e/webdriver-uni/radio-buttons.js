@@ -1,6 +1,6 @@
 /// <reference types = "cypress" />
 
-describe("Verifying radiobuttons", () => {
+describe("Verifying radio-buttons", () => {
     it("Check specific radio buttons and validate", () => {
         cy.visit('https://webdriveruniversity.com');
         cy.get('#dropdown-checkboxes-radiobuttons').invoke('removeAttr', 'target').click();
