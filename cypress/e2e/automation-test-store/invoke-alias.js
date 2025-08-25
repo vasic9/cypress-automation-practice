@@ -16,7 +16,7 @@ describe("Product title check", () => {
     })
 
 
-    it.only("Logs all prices and calculates total amount", () => {
+    it("Logs all prices and calculates total amount", () => {
         cy.visit('https://automationteststore.com/');
         cy.get('.thumbnail').as('productThumbnail');
         cy.get('@productThumbnail').find('.oneprice').invoke('text').as('itemPrice'); //getting info through class and storing it into 'var' itemPrice
