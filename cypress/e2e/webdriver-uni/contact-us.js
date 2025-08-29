@@ -1,7 +1,7 @@
 /// <reference types = "cypress" />
 
 describe("Test for Contact Us form", () => {
-    it.only("should submit the contact form successfully", () => {
+    it("should submit the contact form successfully", () => {
         cy.visit('https://webdriveruniversity.com');
         cy.get('#contact-us').invoke('removeAttr', 'target').click(); //removing attr 'target' to prevent opening new tab due to cypress limitations
         cy.url().should('include', 'Contact-Us/contactus'); //url check

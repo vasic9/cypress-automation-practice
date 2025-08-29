@@ -1,7 +1,7 @@
 /// <reference types = "cypress" />
 
 describe("Inspecting items with chain of commands", () => {
-    it.only('click on the first item using text', () => {
+    it('click on the first item using text', () => {
         cy.visit('https://automationteststore.com/')
        cy.get('.prdocutname').contains('Skinsheen Bronzer Stick').click().then(function(itemHeaderText){
         console.log("Item selected: " + itemHeaderText.text())

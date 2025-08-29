@@ -1,7 +1,7 @@
 /// <reference types = "cypress" />
 
 describe("Handling iFrame and Modals", () => {
-    it.only("iFrame and Modals", () => {
+    it("iFrame and Modals", () => {
         cy.visit('https://webdriveruniversity.com');
         cy.get('#iframe').invoke('removeAttr', 'target').click();
 
