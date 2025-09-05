@@ -5,7 +5,7 @@ describe('Cypress web security', () => {
         cy.visit('https://webdriveruniversity.com');
         cy.get('#automation-test-store').invoke('removeAttr', 'target').click();
     })
-    it.only('Origin command', () => {
+    it('Origin command', () => {
         cy.visit('https://webdriveruniversity.com');
         cy.origin('https://automationteststore.com', () => {
             cy.visit("/")
