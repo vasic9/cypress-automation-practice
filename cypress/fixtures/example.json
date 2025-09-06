@@ -1,0 +1,7 @@
+{
+    "name": "Cypress user",
+    "email": "user@example.com",
+    "body": "Using fixtures to represent data",
+    "first_name": "Arthur",
+    "last_name": "Morgan"
+}

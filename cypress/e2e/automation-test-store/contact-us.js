@@ -2,14 +2,20 @@
 /// <reference types = "cypress-xpath" />
 
 describe("Test for Contact Us form", () => {
+    before(() => {
+        cy.fixture("userDetails").as("user");
+    })
+
     it("should submit the contact form successfully", () => {
         cy.visit('https://automationteststore.com/')
-        cy.get("a[href$='contact']").click().then(function(itemText){
+        cy.get("a[href$='contact']").click().then(function (itemText) {
             cy.log("Clicked on: " + itemText.text())
         });
-        cy.get('#ContactUsFrm_first_name').type('Geralt');
+        cy.get("@user").then((user) => {
+            cy.get('#ContactUsFrm_first_name').type(user.first_name);
+            cy.get('#ContactUsFrm_email').type(user.email);
+        })
         cy.log("populates the form");
-        cy.get('#ContactUsFrm_email').type('geralt@something.com');
         cy.get('#ContactUsFrm_email').should('have.attr', 'name', 'email');
         cy.log("checks validation for email input");
         cy.get('#ContactUsFrm_enquiry').type("Hmmm...");
