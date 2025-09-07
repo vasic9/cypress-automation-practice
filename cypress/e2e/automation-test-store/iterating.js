@@ -13,10 +13,15 @@ describe("Iterating over elements", () => {
     })
 
     it("Clicking on element based on text", () => {
-        cy.get('.fixed_wrapper .prdocutname').each(($el, index, $list) => {
-            if($el.text().includes("Curls to straight Shampoo")) {
-                cy.wrap($el).click()
-            }
-        })
+    //     cy.get('.fixed_wrapper .prdocutname').each(($el, index, $list) => {
+    //         if($el.text().includes("Curls to straight Shampoo")) {
+    //             cy.wrap($el).click()
+    //         }
+    //     })
+        cy.selectProduct("Curls to straight Shampoo");
+    })
+
+    it("Clicking on anotther element based on text", () => {
+        cy.selectProduct("Pantene Pro-V Conditioner, Classic Care");
     })
 })

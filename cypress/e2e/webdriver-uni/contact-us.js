@@ -16,21 +16,23 @@ describe("Test for Contact Us form", () => {
         cy.url().should('include', 'Contact-Us/contactus'); //url check
         cy.document().should('have.property', 'charset').and('eq', 'UTF-8'); //charset check
         cy.title().should('include', 'WebDriver');
-        cy.get('[name="first_name"]').type(data.first_name);
-        cy.get('[name="last_name"]').type(data.last_name);
-        cy.get('[name="email"]').type(data.email);
-        cy.get('[name="message"]').type("Lambert, Lambert, what a ...jolly nice chap!");
-        cy.get('[type="submit"]').click();
-        cy.get('h1').should('have.text', 'Thank You for your Message!');
+        // cy.get('[name="first_name"]').type(data.first_name);
+        // cy.get('[name="last_name"]').type(data.last_name);
+        // cy.get('[name="email"]').type(data.email);
+        // cy.get('[name="message"]').type("Just do one thing or the other, don't try to be two people at once.");
+        // cy.get('[type="submit"]').click();
+        // cy.get('h1').should('have.text', 'Thank You for your Message!');
+        cy.formSubmission(data.first_name, data.last_name, data.email, "Just do one thing or the other, don't try to be two people at once.", 'h1', 'Thank You for your Message!');
         cy.log("Test has completed!");
     })
 
     //negative test case
     it("should not be able to submit the contact form successfully", () => {
-        cy.get('[name="first_name"]').type(data.first_name);
-        cy.get('[name="last_name"]').type(data.last_name);
-        cy.get('[name="message"]').type("Lambert, Lambert, what a ...jolly nice chap!");
-        cy.get('[type="submit"]').click();
-        cy.get('body').contains('Error: all fields are required');
+        // cy.get('[name="first_name"]').type(data.first_name);
+        // cy.get('[name="last_name"]').type(data.last_name);
+        // cy.get('[name="message"]').type("Lambert, Lambert, what a ...jolly nice chap!");
+        // cy.get('[type="submit"]').click();
+        // cy.get('body').contains('Error: all fields are required');
+        cy.formSubmission(data.first_name, data.last_name, " ", "Just do one thing or the other, don't try to be two people at once.", 'body', 'Error: Invalid email address')
     })
 })
