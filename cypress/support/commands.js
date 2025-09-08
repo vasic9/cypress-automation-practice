@@ -37,5 +37,14 @@ Cypress.Commands.add("formSubmission", (firstName, lastName, email, comment, $se
     cy.get($selector).contains(textToLocate);
 })
 
+Cypress.Commands.add("addToBasket", productName => {
+    cy.get('.fixed_wrapper .prdocutname').each(($el, index, $list) => {
+        if ($el.text() === productName) {
+            cy.log($el.text())
+            cy.get('.productcart').eq(index).click();
+        }
+    })
+})
+
 // -- This will overwrite an existing command --
 // Cypress.Commands.overwrite('visit', (originalFn, url, options) => { ... })
