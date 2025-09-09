@@ -2,7 +2,7 @@
 
 describe("Handling data", () => {
   beforeEach(() => {
-    cy.visit("http://webdriveruniversity.com/");
+    cy.visit("/");
     cy.get("#data-table").invoke("removeAttr", "target").click();
   })
   it("Calculate total age of users, plus assertion", () => {

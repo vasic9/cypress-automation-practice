@@ -8,8 +8,8 @@ describe("Test for Contact Us form", () => {
     })
     
     beforeEach(() => {
-        cy.visit('https://webdriveruniversity.com');
-        cy.get('#contact-us').invoke('removeAttr', 'target').click(); //removing attr 'target' to prevent opening new tab due to cypress limitations
+        cy.visit('/' + "/Contact-Us/contactus.html");
+        // cy.get('#contact-us').invoke('removeAttr', 'target').click(); //removing attr 'target' to prevent opening new tab due to cypress limitations
     })
 
     it("should submit the contact form successfully", () => {
@@ -22,7 +22,7 @@ describe("Test for Contact Us form", () => {
         // cy.get('[name="message"]').type("Just do one thing or the other, don't try to be two people at once.");
         // cy.get('[type="submit"]').click();
         // cy.get('h1').should('have.text', 'Thank You for your Message!');
-        cy.formSubmission(data.first_name, data.last_name, data.email, "Just do one thing or the other, don't try to be two people at once.", 'h1', 'Thank You for your Message!');
+        cy.formSubmission(Cypress.env("first_name"), data.last_name, data.email, "Just do one thing or the other, don't try to be two people at once.", 'h1', 'Thank You for your Message!');
         cy.log("Test has completed!");
     })
 

@@ -2,7 +2,7 @@
 
 describe("Validate homepage links", () => {
     it("Confirm links redirect to correct pages", () => {
-        cy.visit('https://webdriveruniversity.com');
+        cy.visit('/');
         cy.get('#contact-us').invoke('removeAttr', 'target').click();
         cy.url().should('include', 'contactus');
         cy.go('back');

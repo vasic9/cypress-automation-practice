@@ -46,5 +46,12 @@ Cypress.Commands.add("addToBasket", productName => {
     })
 })
 
+Cypress.Commands.add("navigateToHomepage", () => {
+    cy.visit("/");
+})
+Cypress.Commands.add("navigateToCheckboxes", () => {
+    cy.visit("/" + "/Dropdown-Checkboxes-RadioButtons/index.html");
+})
+
 // -- This will overwrite an existing command --
 // Cypress.Commands.overwrite('visit', (originalFn, url, options) => { ... })
