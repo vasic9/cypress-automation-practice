@@ -1,6 +1,12 @@
+import HomePage_PO from '../../support/pageObjects/webdriver-uni/homepage_po'
+import Contact_Us_PO from '../../support/pageObjects/webdriver-uni/Contact_Us_PO'
+
 /// <reference types = "cypress" />
 
 describe("Test for Contact Us form", () => {
+    const homepage_PO = new HomePage_PO(); //creating object using class HomePage_PO
+    const contact_Us_PO = new Contact_Us_PO();
+
     before(function() {
         cy.fixture('example').then(function(data) {
             globalThis.data = data
@@ -8,7 +14,10 @@ describe("Test for Contact Us form", () => {
     })
     
     beforeEach(() => {
-        cy.visit('/' + "/Contact-Us/contactus.html");
+        homepage_PO.visitHomepage(); //using function from class
+        homepage_PO.clickOn_ContactUs();
+        
+        // cy.visit('/' + "/Contact-Us/contactus.html");
         // cy.get('#contact-us').invoke('removeAttr', 'target').click(); //removing attr 'target' to prevent opening new tab due to cypress limitations
     })
 
@@ -16,23 +25,11 @@ describe("Test for Contact Us form", () => {
         cy.url().should('include', 'Contact-Us/contactus'); //url check
         cy.document().should('have.property', 'charset').and('eq', 'UTF-8'); //charset check
         cy.title().should('include', 'WebDriver');
-        // cy.get('[name="first_name"]').type(data.first_name);
-        // cy.get('[name="last_name"]').type(data.last_name);
-        // cy.get('[name="email"]').type(data.email);
-        // cy.get('[name="message"]').type("Just do one thing or the other, don't try to be two people at once.");
-        // cy.get('[type="submit"]').click();
-        // cy.get('h1').should('have.text', 'Thank You for your Message!');
-        cy.formSubmission(Cypress.env("first_name"), data.last_name, data.email, "Just do one thing or the other, don't try to be two people at once.", 'h1', 'Thank You for your Message!');
-        cy.log("Test has completed!");
+        contact_Us_PO.contactusForm_Submission(Cypress.env("first_name"), data.last_name, data.email, "Just do one thing or the other, don't try to be two people at once.", 'h1', 'Thank You for your Message!');
     })
 
     //negative test case
     it("should not be able to submit the contact form successfully", () => {
-        // cy.get('[name="first_name"]').type(data.first_name);
-        // cy.get('[name="last_name"]').type(data.last_name);
-        // cy.get('[name="message"]').type("Lambert, Lambert, what a ...jolly nice chap!");
-        // cy.get('[type="submit"]').click();
-        // cy.get('body').contains('Error: all fields are required');
-        cy.formSubmission(data.first_name, data.last_name, " ", "Just do one thing or the other, don't try to be two people at once.", 'body', 'Error: Invalid email address')
+        contact_Us_PO.contactusForm_Submission(data.first_name, data.last_name, " ", "Just do one thing or the other, don't try to be two people at once.", 'body', 'Error: Invalid email address')
     })
 })

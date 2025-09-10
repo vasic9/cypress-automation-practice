@@ -28,15 +28,6 @@ Cypress.Commands.add("selectProduct", productName => {
     })
 })
 
-Cypress.Commands.add("formSubmission", (firstName, lastName, email, comment, $selector, textToLocate) => {
-    cy.get('[name="first_name"]').type(firstName);
-    cy.get('[name="last_name"]').type(lastName);
-    cy.get('[name="email"]').type(email);
-    cy.get('[name="message"]').type(comment);
-    cy.get('[type="submit"]').click();
-    cy.get($selector).contains(textToLocate);
-})
-
 Cypress.Commands.add("addToBasket", productName => {
     cy.get('.fixed_wrapper .prdocutname').each(($el, index, $list) => {
         if ($el.text() === productName) {

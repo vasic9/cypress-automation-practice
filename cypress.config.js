@@ -13,7 +13,8 @@ module.exports = defineConfig({
     baseUrl: "https://webdriveruniversity.com",
     env: {
       first_name: "Arthur",
-      teststore_url: "https://automationteststore.com"
+      teststore_url: "https://automationteststore.com",
+      webdriver_url: "https://webdriveruniversity.com/"
     }
   },
 });
