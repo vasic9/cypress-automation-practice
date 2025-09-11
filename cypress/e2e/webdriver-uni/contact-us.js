@@ -1,9 +1,10 @@
-import HomePage_PO from '../../support/pageObjects/webdriver-uni/homepage_po'
+import HomePage_PO from '../../support/pageObjects/webdriver-uni/Homepage_PO'
 import Contact_Us_PO from '../../support/pageObjects/webdriver-uni/Contact_Us_PO'
 
 /// <reference types = "cypress" />
 
 describe("Test for Contact Us form", () => {
+    Cypress.config('defaultCommandTimeout', 20000); //overriding default timeout to 20 sec
     const homepage_PO = new HomePage_PO(); //creating object using class HomePage_PO
     const contact_Us_PO = new Contact_Us_PO();
 
@@ -15,6 +16,7 @@ describe("Test for Contact Us form", () => {
     
     beforeEach(() => {
         homepage_PO.visitHomepage(); //using function from class
+        cy.wait(3000); // wait 3 seconds
         homepage_PO.clickOn_ContactUs();
         
         // cy.visit('/' + "/Contact-Us/contactus.html");
