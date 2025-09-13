@@ -1,7 +1,7 @@
 const { defineConfig } = require("cypress")
 
 module.exports = defineConfig({
-  video: true,
+  video: false,
   e2e: {
     setupNodeEvents(on, config) {
       // implement node event listeners here
@@ -11,6 +11,10 @@ module.exports = defineConfig({
     experimentalOriginDependencies: true,
     experimentalStudio: true,
     baseUrl: "https://webdriveruniversity.com",
+    screenshotOnRunFailure: true,
+    trashAssetsBeforeRuns: true, //clears screenshots directory before running
+    viewportHeight: 1080,
+    viewportWidth: 1920,
     env: {
       first_name: "Arthur",
       teststore_url: "https://automationteststore.com",

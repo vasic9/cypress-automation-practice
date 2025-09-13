@@ -6,6 +6,8 @@ class Contact_Us_PO {
         cy.get('[name="message"]').type(comment);
         cy.get('[type="submit"]').click();
         cy.get($selector).contains(textToLocate, { timeout: 60000 }); // default timeout changed to 60 sec
+        cy.screenshot();
+        cy.screenshot("Screenshot name")
     }
 }
 

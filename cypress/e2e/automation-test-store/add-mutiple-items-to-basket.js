@@ -13,6 +13,8 @@ describe("Add multiple items to basket", () => {
         })
     })
     beforeEach(() => {
+        cy.clearLocalStorage();
+        cy.clearCookies();
         autoStore_Homepage_PO.visitHomepage();
         autoStore_Homepage_PO.clickOn_Books_Link();
     })

@@ -3,6 +3,7 @@
 
 describe("Test for Contact Us form", () => {
     before(() => {
+        cy.viewport(550,750); //overrides values from config file
         cy.fixture("userDetails").as("user");
     })
 
