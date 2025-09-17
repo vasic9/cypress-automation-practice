@@ -1,4 +1,16 @@
-const { defineConfig } = require("cypress")
+const { defineConfig } = require("cypress");
+const fs = require('fs-extra');
+const path = require('path');
+
+function getConfigurationByFile(file) {
+  const pathToConfigFile = path.resolve('config', `${file}.json`);
+
+  if(!fs.existsSync(pathToConfigFile)) {
+    console.log("No custom config file.");
+    return {};
+  }
+  return fs.readJsonSync(pathToConfigFile);
+}
 
 module.exports = defineConfig({
   projectId: '4tngwg',
@@ -7,6 +19,9 @@ module.exports = defineConfig({
   e2e: {
     setupNodeEvents(on, config) {
       // implement node event listeners here
+      const file = config.env.configFile || ''
+
+      return getConfigurationByFile(file)
     },
     specPattern: "cypress/e2e/**/*.{js,jsx,ts,tsx}",
     chromeWebSecurity: false,
