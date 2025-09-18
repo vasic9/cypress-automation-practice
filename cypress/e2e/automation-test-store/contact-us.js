@@ -3,11 +3,16 @@
 
 describe("Test for Contact Us form", () => {
     before(() => {
-        cy.viewport(550,750); //overrides values from config file
+        // cy.viewport(550,750); //overrides values from config file
         cy.fixture("userDetails").as("user");
     })
 
-    it("should submit the contact form successfully", () => {
+    it("should submit the contact form successfully",{
+        retries: {
+            runMode: 0,
+            openMode: 0
+        }
+    }, () => {
         cy.visit('https://automationteststore.com/')
         cy.get("a[href$='contact']").click().then(function (itemText) {
             cy.log("Clicked on: " + itemText.text())

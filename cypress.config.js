@@ -36,6 +36,10 @@ module.exports = defineConfig({
     reporterOptions: {
       configFile: 'reporter-config.json',
     },
+    retries: {
+      runMode: 0,
+      openMode: 0
+    },
     env: {
       first_name: "Arthur",
       teststore_url: "https://automationteststore.com",
