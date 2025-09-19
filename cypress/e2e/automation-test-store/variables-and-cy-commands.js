@@ -2,8 +2,8 @@
 
 describe("Verifying variables, cypress commands, jquery commands", () => {
     it("Navigates to specific product pages", () => {
-        cy.visit('https://automationteststore.com/');
-        const makeupLink = cy.get("a[href*='product/category&path=']").contains("Makeup").click();
+        cy.visit(Cypress.env("teststore_url"));
+        cy.get("a[href*='product/category&path=']").contains("Makeup").click();
         cy.get("h1 .maintext").then(($headerText) => {
             const headerText = $headerText.text()
             cy.log("Header text: " + headerText)
