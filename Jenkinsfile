@@ -15,7 +15,7 @@ pipeline {
                         label "remote_node1"
                     }
                     steps {
-                        git url: 'https://github.com/vasic9/cypress-automation-practice.git'
+                        git url: 'https://github.com/vasic9/cypress-automation-practice.git', branch: 'main'
                         bat 'npm install'
                         bat 'npm update'
                         bat 'npm run triggerAllTests-teststore-dashboard-parallel'
@@ -26,7 +26,7 @@ pipeline {
                         label "remote_node2"
                     }
                     steps {
-                        git url: 'https://github.com/vasic9/cypress-automation-practice.git'
+                        git url: 'https://github.com/vasic9/cypress-automation-practice.git', branch: 'main'
                         bat 'npm install'
                         bat 'npm update'
                         bat 'npm run triggerAllTests-teststore-dashboard-parallel'
