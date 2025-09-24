@@ -18,7 +18,7 @@ pipeline {
                         git url: 'https://github.com/vasic9/cypress-automation-practice.git', branch: 'main'
                         bat 'npm install'
                         bat 'npm update'
-                        bat 'npm run triggerAllTests-teststore-dashboard-parallel'
+                        bat 'npm run %Script%'
                     }
                 }
                 stage('Slave Node2') {
@@ -29,7 +29,7 @@ pipeline {
                         git url: 'https://github.com/vasic9/cypress-automation-practice.git', branch: 'main'
                         bat 'npm install'
                         bat 'npm update'
-                        bat 'npm run triggerAllTests-teststore-dashboard-parallel'
+                        bat 'npm run %Script%'
                     }
                 }
             }
