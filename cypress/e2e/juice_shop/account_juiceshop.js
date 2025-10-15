@@ -38,8 +38,24 @@ describe("Juice Shop Account", () => {
             }
             cy.request("POST", "http://localhost:3000/rest/user/login", userLogin)
                 .then(response => {
-                    expect(response.status).to.eq(200);
+                    expect(response.status).to.eq(200); //validating response
                 })
         });
+        it("Login via Token", () => {
+            cy.request("POST", "http://localhost:3000/rest/user/login", userLogin)
+            .its('body') //after response extract 'body' object
+            .then(body => {  //then => work with its data
+                const token = body.authentication.token
+                cy.wrap(token).as("userToken") //wrapping token into object for easy reuse
+
+                const userToken = cy.get("@userToken");
+                cy.visit("http://localhost:3000/", {
+                    onBeforeLoad(browser) {
+                        browser.localStorage.setItem("token", userToken); //storing token before visiting url
+                    }
+                })
+                cy.get('.fa-layers-counter').contains(0);
+            })
+        })
     })
 })
